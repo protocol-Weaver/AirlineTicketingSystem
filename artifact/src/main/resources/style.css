@@ -1,0 +1,36 @@
+.nav-bar {
+    -fx-padding: 10;
+    -fx-background-color: #2c3e50;
+}
+
+.nav-button {
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-padding: 8 15;
+    -fx-background-radius: 0;
+}
+
+.nav-button:hover {
+    -fx-background-color: #34495e;
+}
+
+/* Dialog styles */
+.dialog-box {
+    -fx-padding: 20;
+    -fx-background-color: white;
+    -fx-alignment: center;
+}
+
+.dialog-text {
+    -fx-font-size: 16px;
+}
+
+.dialog-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-padding: 5 15;
+}
+.dialog-button:hover {
+    -fx-background-color: #2980b9;
+}
