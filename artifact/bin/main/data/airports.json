@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "JFK",
+    "location": "New York"
+  },
+  {
+    "id": 2,
+    "name": "LAX",
+    "location": "Los Angeles"
+  },
+  {
+    "id": 3,
+    "name": "LHE",
+    "location": "Lahore"
+  },
+  {
+    "id": 4,
+    "name": "DXB",
+    "location": "Dubai"
+  }
+]
