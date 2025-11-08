@@ -1,0 +1,252 @@
+/* --- PAYMENTSTYLES.CSS ---
+  This file styles the AirlinePayment.fxml to look modern and clean.
+*/
+
+/* --- ROOT & FONT --- */
+.root {
+    -fx-font-family: "Inter", "Arial", "sans-serif";
+    -fx-background-color: #f3f4f6; /* light gray background (Tailwind gray-100) */
+    -fx-font-size: 10pt;
+    /* ADDED: Better font rendering */
+    -fx-font-smoothing-type: lcd;
+}
+
+/* --- HEADERS --- */
+.header-label {
+    -fx-font-size: 26pt;
+    -fx-font-weight: 700;
+    -fx-text-fill: #1f2937; /* gray-800 */
+}
+
+.header-icon {
+    -fx-fill: #2563eb; /* blue-600 */
+    -fx-stroke: #2563eb;
+    -fx-stroke-width: 1.5;
+}
+
+/* --- CARD STYLING --- */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-padding: 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 20, 0.0, 0, 8);
+}
+
+/* ADDED: Special style for the summary card */
+.summary-card {
+    /* Subtle gradient to make it stand out */
+    -fx-background-color: linear-gradient(to bottom, white 80%, #f9fafb);
+    -fx-border-width: 1px;
+    -fx-border-color: #e5e7eb;
+}
+
+.card-header {
+    -fx-font-size: 18pt;
+    -fx-font-weight: 600;
+    -fx-text-fill: #1f2937; /* gray-800 */
+    -fx-padding: 0 0 8px 0;
+}
+
+.card-scroll-pane {
+    -fx-background-color: transparent;
+}
+.card-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* --- FORM STYLING --- */
+.form-section {
+    -fx-padding: 20px; /* Increased padding */
+    -fx-background-color: #f9fafb; /* gray-50 */
+    -fx-background-radius: 12px; /* More rounded */    
+}
+
+.titled-pane > .title {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-padding: 8px 0px;
+}
+.titled-pane > .title > .text {
+    -fx-font-size: 12pt;
+    -fx-font-weight: 600;
+}
+.titled-pane > .title > .arrow-button {
+    -fx-padding: 0;
+}
+.titled-pane > .content {
+    -fx-background-color: white;
+    -fx-padding: 16px 0 0 0;
+}
+
+.text-field, .combo-box {
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #d1d5db; /* gray-300 */
+    -fx-padding: 8px 12px;
+    -fx-font-size: 10pt;
+    /* ADDED: Smooth transitions for focus */
+    -fx-transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: #2563eb; /* blue-600 */
+    -fx-border-width: 1.5px; /* Slightly thicker border on focus */
+    -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.3), 10, 0.0, 0, 0);
+}
+
+.combo-box .list-cell {
+    -fx-padding: 8px 12px;
+}
+
+/* --- SUMMARY STYLING --- */
+.summary-section {
+    -fx-padding: 8px 0;
+}
+
+.summary-flight-header {
+    -fx-font-size: 12pt;
+    -fx-font-weight: 600;
+    -fx-text-fill: #1f2937; /* gray-800 */
+}
+
+.summary-flight-route {
+    -fx-font-size: 12pt;
+    -fx-font-weight: 700;
+    -fx-text-fill: #2563eb; /* blue-600 */
+}
+
+.summary-text-light {
+    -fx-font-size: 10pt;
+    -fx-text-fill: #6b7280; /* gray-500 */
+    -fx-fill: #6b7280; /* For Text nodes */
+}
+
+.summary-text-dark {
+    -fx-font-size: 10pt;
+    -fx-font-weight: 500;
+    -fx-text-fill: #1f2937; /* gray-800 */
+}
+
+/* --- TOTAL & PAY BUTTON --- */
+.total-label {
+    -fx-font-size: 16pt;
+    -fx-font-weight: 700;
+    -fx-text-fill: #111827; /* gray-900 */
+}
+
+.total-price-label {
+    -fx-font-size: 24pt;
+    -fx-font-weight: 700;
+    -fx-text-fill: #2563eb; /* blue-600 */
+}
+
+/* --- UPGRADED PAY BUTTON --- */
+.pay-button {
+    /* Gradient for a premium feel */
+    -fx-background-color: linear-gradient(to right, #3b82f6, #2563eb);
+    -fx-text-fill: white;
+    -fx-font-size: 14pt;
+    -fx-font-weight: 700; /* Bolder */
+    -fx-background-radius: 10px; /* More rounded */
+    -fx-padding: 16px;
+    -fx-cursor: hand;
+    /* Modern shadow */
+    -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.3), 15, 0.0, 0, 5);
+    /* Transitions for hover */
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.pay-button:hover {
+    /* Darker gradient on hover */
+    -fx-background-color: linear-gradient(to right, #2563eb, #1d4ed8);
+    /* Stronger shadow and a "lift" effect */
+    -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.5), 18, 0.0, 0, 7);
+    -fx-translate-y: -2px;
+}
+
+.pay-button:disabled {
+    -fx-opacity: 0.7;
+    -fx-translate-y: 0px; /* Remove lift when disabled */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 20, 0.0, 0, 8); /* Reset effect */
+}
+
+.pay-button-icon {
+    -fx-fill: transparent;
+    -fx-stroke: white;
+    -fx-stroke-width: 2;
+}
+
+/* --- STATUS LABEL STYLES --- */
+.status-error {
+    -fx-text-fill: #dc2626; /* red-600 */
+    -fx-font-weight: 600;
+    -fx-padding: 8px;
+    -fx-background-color: #fee2e2; /* red-50 */
+    -fx-background-radius: 8px;
+    -fx-border-color: #fca5a5; /* red-300 */
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+}
+
+.status-success {
+    -fx-text-fill: #16a34a; /* green-600 */
+    -fx-font-weight: 600;
+    -fx-padding: 8px;
+    -fx-background-color: #dcfce7; /* green-50 */
+    -fx-background-radius: 8px;
+    -fx-border-color: #86efac; /* green-300 */
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+}
+
+.status-info {
+    -fx-text-fill: #6b7280; /* gray-500 */
+    -fx-padding: 8px;
+}
+
+
+
+.main-scroll-pane {
+    -fx-fit-to-width: true;
+    -fx-background-color: transparent;
+}
+
+/* Style the ScrollPane viewport */
+.main-scroll-pane .viewport {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Style vertical scrollbar */
+.main-scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8px;
+}
+
+.main-scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: linear-gradient(to bottom, #6a5acd, #836fff);
+    -fx-background-insets: 2;
+    -fx-background-radius: 4px;
+}
+
+/* Hover effect for thumb */
+.main-scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: linear-gradient(to bottom, #483d8b, #7b68ee);
+}
+
+/* Style horizontal scrollbar (optional) */
+.main-scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-height: 8px;
+}
+
+.main-scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: linear-gradient(to right, #6a5acd, #836fff);
+    -fx-background-insets: 2;
+    -fx-background-radius: 4px;
+}
+
+.main-scroll-pane .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: linear-gradient(to right, #483d8b, #7b68ee);
+}
