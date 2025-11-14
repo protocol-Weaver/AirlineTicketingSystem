@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "departureAirportId": 1,
+    "arrivalAirportId": 2,
+    "aircraftId": 1,
+    "crewId": 1,
+    "departureTime": "2025-11-27",
+    "arrivalTime": "2025-11-27",
+    "availableSeats": 404
+  },
+  {
+    "id": 2,
+    "departureAirportId": 2,
+    "arrivalAirportId": 3,
+    "aircraftId": 2,
+    "crewId": 2,
+    "departureTime": "2025-11-29",
+    "arrivalTime": "2025-11-29",
+    "availableSeats": 179
+  },
+  {
+    "id": 3,
+    "departureAirportId": 3,
+    "arrivalAirportId": 4,
+    "aircraftId": 2,
+    "crewId": 1,
+    "departureTime": "2025-11-22",
+    "arrivalTime": "2025-11-22",
+    "availableSeats": 180
+  },
+  {
+    "id": 0,
+    "departureAirportId": 1,
+    "arrivalAirportId": 2,
+    "aircraftId": 1,
+    "crewId": 2,
+    "departureTime": "2025-12-02",
+    "arrivalTime": "2025-12-03",
+    "availableSeats": 413
+  },
+  {
+    "id": 0,
+    "departureAirportId": 1,
+    "arrivalAirportId": 2,
+    "aircraftId": 2,
+    "crewId": 2,
+    "departureTime": "2025-12-16",
+    "arrivalTime": "2025-12-22",
+    "availableSeats": 180
+  }
+]
