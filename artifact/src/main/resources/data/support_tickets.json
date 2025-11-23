@@ -1,0 +1,124 @@
+[
+  {
+    "id": 1,
+    "userId": 2,
+    "userName": "Sam Customer",
+    "subject": "issue",
+    "status": "RESOLVED",
+    "createdAt": "2025-11-18",
+    "messages": [
+      {
+        "senderName": "Sam Customer",
+        "senderRole": "CUSTOMER",
+        "message": "heheheh",
+        "timestamp": "2025-11-18T20:44:52.955372600"
+      },
+      {
+        "senderName": "Hollow",
+        "senderRole": "STAFF",
+        "message": "dksdjskjd",
+        "timestamp": "2025-11-18T20:45:37.493956700"
+      },
+      {
+        "senderName": "Hollow",
+        "senderRole": "STAFF",
+        "message": "nnn",
+        "timestamp": "2025-11-18T20:57:53.108669300"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "userName": "Sam Customer",
+    "subject": "nnnnnn",
+    "status": "RESOLVED",
+    "createdAt": "2025-11-18",
+    "messages": [
+      {
+        "senderName": "Sam Customer",
+        "senderRole": "CUSTOMER",
+        "message": "nnnn",
+        "timestamp": "2025-11-18T21:12:09.988218800"
+      },
+      {
+        "senderName": "Hollow",
+        "senderRole": "STAFF",
+        "message": "hihihi",
+        "timestamp": "2025-11-18T21:12:38.680746300"
+      },
+      {
+        "senderName": "Hollow",
+        "senderRole": "STAFF",
+        "message": "jkjkj",
+        "timestamp": "2025-11-18T21:12:46.949164100"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "userId": 4,
+    "userName": "AbdulRehman",
+    "subject": "hjhjhj",
+    "status": "IN_PROGRESS",
+    "createdAt": "2025-11-19",
+    "messages": [
+      {
+        "senderName": "AbdulRehman",
+        "senderRole": "CUSTOMER",
+        "message": "jkjkjk",
+        "timestamp": "2025-11-19T09:03:39.721645400"
+      },
+      {
+        "senderName": "AbdulRehman",
+        "senderRole": "CUSTOMER",
+        "message": "jhjhjh",
+        "timestamp": "2025-11-19T09:03:52.271713"
+      },
+      {
+        "senderName": "AbdulRehman",
+        "senderRole": "CUSTOMER",
+        "message": "jjjj",
+        "timestamp": "2025-11-26T18:34:18.791167200"
+      },
+      {
+        "senderName": "Hollow",
+        "senderRole": "STAFF",
+        "message": "jjj",
+        "timestamp": "2025-11-27T17:33:52.472695600"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "userId": 3,
+    "userName": "AbdulRehman",
+    "subject": "mm",
+    "status": "OPEN",
+    "createdAt": "2025-12-02",
+    "messages": [
+      {
+        "senderName": "AbdulRehman",
+        "senderRole": "CUSTOMER",
+        "message": "mmmm",
+        "timestamp": "2025-12-02T21:07:56.942101700"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "userId": 3,
+    "userName": "AbdulRehman",
+    "subject": "jjj",
+    "status": "OPEN",
+    "createdAt": "2025-12-02",
+    "messages": [
+      {
+        "senderName": "AbdulRehman",
+        "senderRole": "CUSTOMER",
+        "message": "jj",
+        "timestamp": "2025-12-02T21:47:20.579683"
+      }
+    ]
+  }
+]

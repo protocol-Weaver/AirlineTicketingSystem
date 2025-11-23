@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "crewName": "Alpha Team",
+    "captainName": "Capt. Rogers"
+  },
+  {
+    "id": 2,
+    "crewName": "Bravo Team",
+    "captainName": "Capt. Marvel"
+  }
+]

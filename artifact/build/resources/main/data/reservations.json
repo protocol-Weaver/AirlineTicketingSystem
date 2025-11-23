@@ -1,0 +1,168 @@
+[
+  {
+    "id": 1,
+    "flightId": 1,
+    "customerName": "Sam Customer",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "9C",
+    "reservationDate": "2025-11-17",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 2,
+    "flightId": 1,
+    "customerName": "Sam Customer",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "9D",
+    "reservationDate": "2025-11-17",
+    "price": 109949.0,
+    "status": "PENDING",
+    "adminName": "Customer Booking",
+    "expiryTime": "2025-11-26T00:00"
+  },
+  {
+    "id": 3,
+    "flightId": 1,
+    "customerName": "Sam Customer",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "9B",
+    "reservationDate": "2025-11-17",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 4,
+    "flightId": 1,
+    "customerName": "Sam Customer",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "13B",
+    "reservationDate": "2025-11-18",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 5,
+    "flightId": 1,
+    "customerName": "Sam Customer",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "18F",
+    "reservationDate": "2025-11-18",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 6,
+    "flightId": 1,
+    "customerName": "Sam Customer",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "19E",
+    "reservationDate": "2025-11-18",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 7,
+    "flightId": 1,
+    "customerName": "AbdulRehman",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "14C",
+    "reservationDate": "2025-11-19",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 8,
+    "flightId": 1,
+    "customerName": "AbdulRehman",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "19D",
+    "reservationDate": "2025-11-19",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 9,
+    "flightId": 1,
+    "customerName": "AbdulRehman",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "14F",
+    "reservationDate": "2025-11-19",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 10,
+    "flightId": 1,
+    "customerName": "AbdulRehman",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "17C",
+    "reservationDate": "2025-11-23",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 11,
+    "flightId": 1,
+    "customerName": "AbdulRehman",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "20E",
+    "reservationDate": "2025-11-26",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 12,
+    "flightId": 2,
+    "customerName": "Sam Customer",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "18D",
+    "reservationDate": "2025-11-29",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 13,
+    "flightId": 0,
+    "customerName": "AbdulRehman",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "18E",
+    "reservationDate": "2025-12-02",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 14,
+    "flightId": 0,
+    "customerName": "AbdulRehman",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "19D",
+    "reservationDate": "2025-12-02",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 15,
+    "flightId": 0,
+    "customerName": "AbdulRehman",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "17D",
+    "reservationDate": "2025-12-03",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  }
+]
