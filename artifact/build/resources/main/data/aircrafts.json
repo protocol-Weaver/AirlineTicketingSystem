@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "type": "Boeing 747",
+    "capacity": 416
+  },
+  {
+    "id": 2,
+    "type": "Airbus A320",
+    "capacity": 180
+  }
+]
