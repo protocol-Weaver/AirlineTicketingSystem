@@ -126,5 +126,21 @@
     "paymentStatus": "PENDING",
     "flightInfo": "JFK ➔ LAX",
     "flightDate": "2025-12-16"
+  },
+  {
+    "id": 17,
+    "reservationId": 17,
+    "customerName": "Sam Customer",
+    "paymentStatus": "CONFIRMED",
+    "flightInfo": "JFK ➔ LAX",
+    "flightDate": "2025-12-16"
+  },
+  {
+    "id": 18,
+    "reservationId": 18,
+    "customerName": "Sam Customer",
+    "paymentStatus": "CONFIRMED",
+    "flightInfo": "JFK ➔ LAX",
+    "flightDate": "2025-12-16"
   }
 ]

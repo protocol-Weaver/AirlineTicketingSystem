@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<jpackage-state version="21.0.8" platform="windows">
+  <app-version>0.0.1</app-version>
+  <main-launcher>MyFlightApp</main-launcher>
+  <main-class>artifact.GUI.Launcher</main-class>
+  <signed>false</signed>
+  <app-store>false</app-store></jpackage-state>
