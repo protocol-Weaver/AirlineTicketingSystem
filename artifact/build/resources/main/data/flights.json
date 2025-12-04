@@ -5,8 +5,8 @@
     "arrivalAirportId": 2,
     "aircraftId": 1,
     "crewId": 1,
-    "departureTime": "2025-11-27",
-    "arrivalTime": "2025-11-27",
+    "departureTime": "2025-11-27T10:00",
+    "arrivalTime": "2025-11-27T12:00",
     "availableSeats": 404
   },
   {
@@ -15,8 +15,8 @@
     "arrivalAirportId": 3,
     "aircraftId": 2,
     "crewId": 2,
-    "departureTime": "2025-11-29",
-    "arrivalTime": "2025-11-29",
+    "departureTime": "2025-11-29T14:30",
+    "arrivalTime": "2025-11-29T16:30",
     "availableSeats": 179
   },
   {
@@ -25,28 +25,28 @@
     "arrivalAirportId": 4,
     "aircraftId": 2,
     "crewId": 1,
-    "departureTime": "2025-11-22",
-    "arrivalTime": "2025-11-22",
+    "departureTime": "2025-11-22T08:15",
+    "arrivalTime": "2025-11-22T10:45",
     "availableSeats": 180
   },
   {
-    "id": 0,
+    "id": 4,
     "departureAirportId": 1,
     "arrivalAirportId": 2,
     "aircraftId": 1,
     "crewId": 2,
-    "departureTime": "2025-12-02",
-    "arrivalTime": "2025-12-03",
+    "departureTime": "2025-12-02T09:00",
+    "arrivalTime": "2025-12-03T11:00",
     "availableSeats": 413
   },
   {
-    "id": 0,
+    "id": 5,
     "departureAirportId": 1,
     "arrivalAirportId": 2,
     "aircraftId": 2,
     "crewId": 2,
-    "departureTime": "2025-12-16",
-    "arrivalTime": "2025-12-22",
-    "availableSeats": 180
+    "departureTime": "2025-12-16T18:00",
+    "arrivalTime": "2025-12-22T06:00",
+    "availableSeats": 179
   }
 ]

@@ -164,5 +164,39 @@
     "price": 109949.0,
     "status": "CONFIRMED",
     "adminName": "Customer Booking"
+  },
+  {
+    "id": 16,
+    "flightId": 5,
+    "customerName": "Sam Customer",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "15D",
+    "reservationDate": "2025-12-04",
+    "price": 109949.0,
+    "status": "PENDING",
+    "adminName": "Customer Booking",
+    "expiryTime": "2025-12-15T18:00"
+  },
+  {
+    "id": 17,
+    "flightId": 5,
+    "customerName": "Sam Customer",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "16B",
+    "reservationDate": "2025-12-04",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
+  },
+  {
+    "id": 18,
+    "flightId": 5,
+    "customerName": "Sam Customer",
+    "customerPhone": "N/A (Customer)",
+    "seatNumber": "17D",
+    "reservationDate": "2025-12-04",
+    "price": 109949.0,
+    "status": "CONFIRMED",
+    "adminName": "Customer Booking"
   }
 ]

@@ -4,7 +4,7 @@ import artifact.Backend.Models.Flight;
 import artifact.Backend.Repositories.Interfaces.IFlightRepository;
 
 import com.google.gson.reflect.TypeToken;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +19,10 @@ public class FlightRepository extends BaseJsonRepository<Flight> implements IFli
     @Override
     protected void seedData() {
         System.out.println("Seeding Flights...");
-        dataList.add(new Flight(1, 1, 2, 1, 1, LocalDate.now().plusDays(10), LocalDate.now().plusDays(10), 416));
-        dataList.add(new Flight(2, 2, 3, 2, 2, LocalDate.now().plusDays(12), LocalDate.now().plusDays(12), 180));
-        dataList.add(new Flight(3, 3, 4, 2, 1, LocalDate.now().plusDays(5), LocalDate.now().plusDays(5), 180));
+        // FIXED: Using LocalDateTime and adding hours for duration
+        dataList.add(new Flight(1, 1, 2, 1, 1, LocalDateTime.now().plusDays(10).withHour(10).withMinute(0), LocalDateTime.now().plusDays(10).plusHours(2), 416));
+        dataList.add(new Flight(2, 2, 3, 2, 2, LocalDateTime.now().plusDays(12).withHour(14).withMinute(30), LocalDateTime.now().plusDays(12).plusHours(4), 180));
+        dataList.add(new Flight(3, 3, 4, 2, 1, LocalDateTime.now().plusDays(5).withHour(07).withMinute(15), LocalDateTime.now().plusDays(5).plusHours(1), 180));
         save();
     }
 
@@ -42,24 +43,17 @@ public class FlightRepository extends BaseJsonRepository<Flight> implements IFli
     public List<Flight> findFlightsByRouteAndMonth(long fromId, long toId, YearMonth month) {
         return dataList.stream()
                 .filter(f -> f.departureAirportId() == fromId && f.arrivalAirportId() == toId)
+                // FIXED: YearMonth.from works with LocalDateTime
                 .filter(f -> YearMonth.from(f.departureTime()).equals(month))
                 .filter(f -> f.availableSeats() > 0)
                 .collect(Collectors.toList());
     }
 
-        @Override
+    @Override
     public void delete(long id) {
-        // 1. Delete the User (This triggers Supabase DELETE)
-        // Supabase will automatically delete the user AND cascading tickets/reservations
         super.delete(id); 
-
-        // 2. Wait a brief moment for Supabase to finish the Cascade? 
-        // Usually it's instant, but safe to fetch immediately.
-
-        // 3. Tell related repositories to refresh themselves
         RepositoryProvider.getReservationRepository().refreshFromCloud();
         RepositoryProvider.getTicketRepository().refreshFromCloud();
-        
         System.out.println("Cascading delete handled by Cloud. Local files updated.");
     }
 }

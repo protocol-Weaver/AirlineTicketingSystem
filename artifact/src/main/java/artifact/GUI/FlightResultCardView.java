@@ -6,111 +6,164 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import java.time.format.DateTimeFormatter;
 import java.util.function.Consumer;
 
 import artifact.Backend.Models.FlightSearchResult;
-import artifact.Backend.Models.Models;
 
 /**
- * NEW: A reusable, custom-designed card to display one flight result.
- * This is the "cool design" part.
+ * A modern, data-focused card for flight results.
+ * Highlights Departure/Arrival times and Airport codes using REAL data.
  */
-public class FlightResultCardView extends AnchorPane {
+public class FlightResultCardView extends HBox {
+
+    // Formatters for display
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("MMM dd, yyyy");
 
     public FlightResultCardView(FlightSearchResult result, Consumer<FlightSearchResult> onBookAction) {
-        setStyle("-fx-background-color: #ffffff; -fx-background-radius: 12px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 12, 0, 0, 4);");
-        setPadding(new Insets(20.0));
-        setMaxWidth(800.0);
-
-        HBox mainLayout = new HBox(24.0);
-        mainLayout.setAlignment(Pos.CENTER_LEFT);
-        AnchorPane.setTopAnchor(mainLayout, 20.0);
-        AnchorPane.setBottomAnchor(mainLayout, 20.0);
-        AnchorPane.setLeftAnchor(mainLayout, 20.0);
-        AnchorPane.setRightAnchor(mainLayout, 20.0);
-
-        // --- Left Side: Flight Info ---
-        VBox flightInfo = new VBox(12.0);
-        
-        // Times and Airports
-        HBox routeBox = new HBox(16.0);
-        routeBox.setAlignment(Pos.CENTER_LEFT);
-        Label time = new Label("10:00 AM"); // Mock time
-        time.setFont(Font.font("System", FontWeight.BOLD, 18.0));
-        
-        VBox depBox = createAirportLabel(
-        result.departureAirport().name(),
-        result.departureAirport().location()
+        // --- Card Container Styling ---
+        this.setAlignment(Pos.CENTER_LEFT);
+        this.setPadding(new Insets(20));
+        this.setSpacing(25);
+        this.setMaxWidth(900);
+        this.setStyle(
+            "-fx-background-color: white;" +
+            "-fx-background-radius: 12;" +
+            "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 4);"
         );
 
-        Label departure = (Label) depBox.getChildren().get(0);
-        VBox arrBox = createAirportLabel(result.arrivalAirport().name(), result.arrivalAirport().location());
-        Label arrival = (Label) arrBox.getChildren().get(0);
-        
-        SVGPath arrow = new SVGPath();
-        arrow.setContent("M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3");
-        arrow.setStyle("-fx-stroke: #00a4bf; -fx-stroke-width: 2.5;");
-        
-        routeBox.getChildren().addAll(time, depBox, arrow, arrBox);
+        // --- SECTION 1: Flight Route & Times (Left) ---
+        VBox flightInfoSection = new VBox(12);
+        flightInfoSection.setAlignment(Pos.CENTER_LEFT);
+        HBox.setHgrow(flightInfoSection, Priority.ALWAYS);
 
-        // Date and Aircraft
-        Label date = new Label(result.flight().departureTime().format(Models.DATE_FORMATTER));
-        date.setFont(Font.font(14.0));
-        date.setTextFill(Color.web("#555"));
-        Label aircraft = new Label(result.aircraft().type());
-        aircraft.setFont(Font.font(14.0));
-        aircraft.setTextFill(Color.web("#555"));
+        // 1.1 Header: Date & Aircraft (Top Left)
+        // Using real departure date
+        String dateString = result.flight().departureTime().format(DATE_FORMATTER);
+        Label dateLabel = new Label(dateString);
+        Label aircraftLabel = new Label(" • " + result.aircraft().type());
         
-        HBox detailsBox = new HBox(16.0, date, new Label("•"), aircraft);
+        dateLabel.setStyle("-fx-text-fill: #7f8c8d; -fx-font-size: 13px;");
+        aircraftLabel.setStyle("-fx-text-fill: #7f8c8d; -fx-font-size: 13px;");
+        HBox metaInfo = new HBox(dateLabel, aircraftLabel);
 
-        flightInfo.getChildren().addAll(routeBox, detailsBox);
+        // 1.2 Main Data Row: Time - Graphic - Time
+        HBox routeData = new HBox(30);
+        routeData.setAlignment(Pos.CENTER_LEFT);
 
-        // --- Right Side: Price and Button ---
-        VBox priceSection = new VBox(8.0);
-        priceSection.setAlignment(Pos.CENTER_RIGHT);
-        
-        Label price = new Label("$295.50"); // Mock price
-        price.setFont(Font.font("System", FontWeight.BOLD, 26.0));
-        price.setTextFill(Color.web("#080c53"));
-        
-        Label seats = new Label(result.flight().availableSeats() + " seats left");
-        seats.setFont(Font.font(14.0));
-        seats.setTextFill(Color.ORANGE.darker());
-        
-        priceSection.getChildren().addAll(price, seats);
+        // Departure Data Block (Real Data)
+        VBox depBlock = createDataBlock("DEPARTURE", 
+            result.flight().departureTime().format(TIME_FORMATTER), 
+            result.departureAirport().name(), 
+            result.departureAirport().location(), 
+            Pos.CENTER_LEFT);
 
-        Button bookButton = new Button("Book Now");
-        bookButton.setPrefHeight(40.0);
-        bookButton.setPrefWidth(120.0);
-        bookButton.setFont(Font.font("System", FontWeight.BOLD, 14.0));
-        bookButton.setTextFill(Color.WHITE);
-        bookButton.setStyle("-fx-background-color: #00a4bf; -fx-background-radius: 8px;");
+        // Flight Path Graphic (Visual Connector)
+        StackPane flightPath = createFlightGraphic();
+
+        // Arrival Data Block (Real Data)
+        VBox arrBlock = createDataBlock("ARRIVAL", 
+            result.flight().arrivalTime().format(TIME_FORMATTER), 
+            result.arrivalAirport().name(), 
+            result.arrivalAirport().location(), 
+            Pos.CENTER_RIGHT);
+
+        routeData.getChildren().addAll(depBlock, flightPath, arrBlock);
+        flightInfoSection.getChildren().addAll(metaInfo, routeData);
+
+        // --- SECTION 2: Vertical Divider ---
+        Separator verticalSeparator = new Separator();
+        verticalSeparator.setOrientation(javafx.geometry.Orientation.VERTICAL);
+
+        // --- SECTION 3: Price & Book Action (Right) ---
+        VBox actionSection = new VBox(5);
+        actionSection.setAlignment(Pos.CENTER_RIGHT);
+        actionSection.setMinWidth(160);
+
+        // Price
+        Label priceLabel = new Label("$295.50");
+        priceLabel.setFont(Font.font("System", FontWeight.BOLD, 26));
+        priceLabel.setTextFill(Color.web("#2c3e50"));
+
+        // Seats Left
+        Label seatsLabel = new Label(result.flight().availableSeats() + " seats left");
+        seatsLabel.setStyle("-fx-text-fill: #e67e22; -fx-font-size: 12px;");
+
+        // Book Button
+        Button bookButton = new Button("Book Flight");
+        bookButton.setPrefWidth(140);
+        bookButton.setPrefHeight(40);
         bookButton.setCursor(Cursor.HAND);
-        
-        // --- Action ---
+        bookButton.setStyle(
+            "-fx-background-color: #00a4bf;" +
+            "-fx-text-fill: white;" +
+            "-fx-font-weight: bold;" +
+            "-fx-font-size: 14px;" +
+            "-fx-background-radius: 6;"
+        );
         bookButton.setOnAction(e -> onBookAction.accept(result));
 
         Region spacer = new Region();
-        HBox.setHgrow(spacer, Priority.ALWAYS);
-        
-        mainLayout.getChildren().addAll(flightInfo, spacer, priceSection, new Separator(javafx.geometry.Orientation.VERTICAL), bookButton);
-        getChildren().add(mainLayout);
+        spacer.setPrefHeight(10);
+
+        actionSection.getChildren().addAll(priceLabel, seatsLabel, spacer, bookButton);
+
+        // --- Add all to Root ---
+        this.getChildren().addAll(flightInfoSection, verticalSeparator, actionSection);
     }
 
-    private VBox createAirportLabel(String code, String location) {
-        VBox box = new VBox(-2.0); // Tight spacing
+    /**
+     * Creates a vertical block of data: Label, Time, Airport Code, City
+     */
+    private VBox createDataBlock(String header, String time, String code, String city, Pos alignment) {
+        VBox box = new VBox(2);
+        box.setAlignment(alignment);
+
+        Label headerLabel = new Label(header);
+        headerLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: #95a5a6; -fx-font-weight: bold;");
+
+        Label timeLabel = new Label(time);
+        timeLabel.setStyle("-fx-font-size: 24px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;");
+
         Label codeLabel = new Label(code);
-        codeLabel.setFont(Font.font("System", FontWeight.BOLD, 22.0));
-        codeLabel.setTextFill(Color.web("#080c53"));
-        Label locLabel = new Label(location);
-        locLabel.setFont(Font.font(14.0));
-        locLabel.setTextFill(Color.web("#555"));
-        box.getChildren().addAll(codeLabel, locLabel);
+        codeLabel.setStyle("-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;");
+
+        Label cityLabel = new Label(city);
+        cityLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #7f8c8d;");
+
+        box.getChildren().addAll(headerLabel, timeLabel, codeLabel, cityLabel);
         return box;
+    }
+
+    /**
+     * Creates a simple, non-intrusive flight path graphic
+     */
+    private StackPane createFlightGraphic() {
+        StackPane pane = new StackPane();
+        pane.setMinWidth(100);
+        pane.setAlignment(Pos.CENTER);
+
+        // The line
+        Region line = new Region();
+        line.setMaxHeight(1);
+        line.setStyle("-fx-background-color: #bdc3c7;");
+        
+        // The plane icon
+        SVGPath plane = new SVGPath();
+        plane.setContent("M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z");
+        plane.setFill(Color.web("#bdc3c7"));
+        plane.setRotate(90);
+        plane.setScaleX(0.8);
+        plane.setScaleY(0.8);
+
+        pane.getChildren().addAll(line, plane);
+        return pane;
     }
 }

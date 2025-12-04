@@ -99,11 +99,28 @@ public class ReservationService implements IReservationService {
         Reservation createdReservation = reservationRepository.addReservation(newReservation);
         
         // Persist Ticket
-        Ticket newTicket = new Ticket(0, createdReservation.id(), custName, status, "Flight " + flight.id(), flight.departureTime());
+        Ticket newTicket = new Ticket(0, createdReservation.id(), custName, status, "Flight " + flight.id(), flight.departureTime().toLocalDate());
         ticketRepository.add(newTicket);
         
         return result; 
     }
+    
+    public ServiceResult addGroupReservation(String custName, String custPhone, Flight flight, Set<String> seats, LocalDate resDate, String totalPriceStr, boolean isPaid) {
+         ServiceResult result = new ServiceResult();
+         
+         double total = Double.parseDouble(totalPriceStr);
+         double perSeat = total / seats.size();
+         String perSeatStr = String.valueOf(perSeat);
+         
+         for (String seat : seats) {
+             ServiceResult res = addReservation(custName, custPhone, flight, seat, resDate, perSeatStr, isPaid);
+             if (!res.isSuccess()) {
+                 return res; // Stop if one fails
+             }
+         }
+         return result;
+    }
+
     
     /**
      * Retrieves a set of occupied seat numbers for a specific flight.

@@ -88,10 +88,10 @@ public class FlightsController extends BaseController {
         );
 
         TableColumn<Flight, LocalDate> depTimeCol = new TableColumn<>("Dep. Time");
-        depTimeCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().departureTime()));
+        depTimeCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().departureTime().toLocalDate()));
 
         TableColumn<Flight, LocalDate> arrTimeCol = new TableColumn<>("Arr. Time");
-        arrTimeCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().arrivalTime()));
+        arrTimeCol.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().arrivalTime().toLocalDate()));
         
         TableColumn<Flight, String> crewCol = new TableColumn<>("Crew");
         crewCol.setCellValueFactory(cellData ->

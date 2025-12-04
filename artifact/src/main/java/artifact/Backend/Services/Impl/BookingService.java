@@ -17,10 +17,6 @@ import artifact.Backend.Tags.BookingStatus;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-/**
- * Service implementation for the Customer-side booking flow.
- * Coordinates Seat updates, Reservation creation, Ticket generation, and Notifications.
- */
 public class BookingService implements IBookingService {
 
     private final IFlightRepository flightRepository;
@@ -40,22 +36,10 @@ public class BookingService implements IBookingService {
         this.notificationManager = notificationService;
     }
     
-    /**
-     * Processes a flight booking request from a customer.
-     * * Steps:
-     * 1. Validates inputs.
-     * 2. Checks seat availability.
-     * 3. Decrements seat count, creates Reservation, creates Ticket.
-     * 4. Triggers email notifications via Observer pattern.
-     *
-     * @param request DTO containing flight search result, customer info, and booking status.
-     * @return ServiceResult indicating success or failure (e.g., sold out).
-     */
     @Override
     public ServiceResult bookFlight(BookingRequest request) {
         ServiceResult result = new ServiceResult();
 
-        // 1. Validation
         if (request.flightResult() == null) {
             result.addError("flight", "Flight details missing.");
         }
@@ -66,21 +50,17 @@ public class BookingService implements IBookingService {
 
         Flight flight = request.flightResult().flight();
         
-        // 2. Business Logic Check: Concurrency safety check for seats
         if (flight.availableSeats() <= 0) {
             result.setGlobalError("Sorry, this flight just sold out.");
             return result;
         }
         
-        // 3. Execution: Update Flight Capacity
         flightRepository.decrementSeat(flight.id());
         
-        // Determine booking status and expiration time (Pending bookings expire in 24 hours relative to flight)
         BookingStatus status = request.status();
         LocalDateTime expiry = (status == BookingStatus.PENDING) ? 
-            flight.departureTime().atStartOfDay().minusDays(1) : null;
+            flight.departureTime().minusDays(1) : null;
 
-        // Create and Persist Reservation
         Reservation newReservation = new Reservation(
             0, 
             flight.id(), 
@@ -100,18 +80,16 @@ public class BookingService implements IBookingService {
             request.flightResult().arrivalAirport().name()
         );
         
-        // Create and Persist Ticket
         Ticket newTicket = new Ticket(
             0, 
             createdReservation.id(), 
             request.customer().name(), 
             status, 
             flightInfo, 
-            flight.departureTime()
+            flight.departureTime().toLocalDate()
         );
         ticketRepository.add(newTicket);
 
-        // 4. Notification Handling: Trigger email events based on status
         if(status == BookingStatus.CONFIRMED) {
             Notification message = NotificationFactory.createBookingConfirmed(
                 request.customer().email(), 

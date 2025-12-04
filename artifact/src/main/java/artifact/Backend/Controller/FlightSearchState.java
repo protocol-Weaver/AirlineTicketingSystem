@@ -1,11 +1,14 @@
 package artifact.Backend.Controller;
+
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import artifact.Backend.Models.FlightSearchResult;
 
 /**
- * UPDATED: Now stores cabin, guest count, and selected seat.
+ * UPDATED: Stores a Set<String> of seats to support multi-guest booking.
  */
 public class FlightSearchState {
     
@@ -14,16 +17,16 @@ public class FlightSearchState {
     private List<FlightSearchResult> searchResults;
     private FlightSearchResult selectedFlight;
     
-    // --- NEW STATE from Wizard ---
     private String selectedCabin;
     private int guestCount;
-    // --- NEW STATE from SeatSelectionView ---
-    private String selectedSeat;
+    
+    private Set<String> selectedSeats;
 
     private FlightSearchState() {
         this.searchResults = Collections.emptyList();
         this.selectedCabin = "Economy";
         this.guestCount = 1;
+        this.selectedSeats = new HashSet<>();
     }
 
     public static FlightSearchState getInstance() {
@@ -44,18 +47,30 @@ public class FlightSearchState {
     // --- Cabin & Guests ---
     public String getSelectedCabin() { return selectedCabin; }
     public void setSelectedCabin(String cabin) { this.selectedCabin = cabin; }
+    
     public int getGuestCount() { return guestCount; }
     public void setGuestCount(int count) { this.guestCount = count; }
 
-    // --- Selected Seat ---
-    public String getSelectedSeat() { return selectedSeat; }
-    public void setSelectedSeat(String seat) { this.selectedSeat = seat; }
+    // --- UPDATED: Seat Management ---
+    public Set<String> getSelectedSeats() { return selectedSeats; }
+    
+    public void addSeat(String seat) {
+        this.selectedSeats.add(seat);
+    }
+    
+    public void removeSeat(String seat) {
+        this.selectedSeats.remove(seat);
+    }
+    
+    public boolean isSelectionComplete() {
+        return selectedSeats.size() == guestCount;
+    }
     
     public void clearState() {
         searchResults = Collections.emptyList();
         selectedFlight = null;
         selectedCabin = "Economy";
         guestCount = 1;
-        selectedSeat = null;
+        selectedSeats.clear();
     }
 }

@@ -1,5 +1,5 @@
 package artifact.Backend.Models;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public record Flight(
     long id,
@@ -7,7 +7,7 @@ public record Flight(
     long arrivalAirportId,
     long aircraftId,
     long crewId,
-    LocalDate departureTime,
-    LocalDate arrivalTime,
+    LocalDateTime departureTime,
+    LocalDateTime arrivalTime,
     int availableSeats
 ) {}
